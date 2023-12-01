@@ -1,0 +1,44 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-android-fullscreen": {
+      "PACKAGE_NAME": "com.holugrail.medievalclicker"
+    },
+    "cordova-plugin-fullscreen": {
+      "PACKAGE_NAME": "com.holugrail.medievalclicker"
+    },
+    "@codeeshop/cordova-plugin-google-play-games": {
+      "PACKAGE_NAME": "com.holugrail.medievalclicker"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
+      "id": "cordova-plugin-fullscreen.AndroidFullScreen",
+      "pluginId": "cordova-plugin-fullscreen",
+      "clobbers": [
+        "AndroidFullScreen"
+      ]
+    },
+    {
+      "file": "plugins/@codeeshop/cordova-plugin-google-play-games/www/googleplaygames.js",
+      "id": "@codeeshop/cordova-plugin-google-play-games.GooglePlayGames",
+      "pluginId": "@codeeshop/cordova-plugin-google-play-games",
+      "clobbers": [
+        "GooglePlayGames"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-android-fullscreen": "1.0.0",
+    "cordova-plugin-fullscreen": "1.3.0",
+    "@codeeshop/cordova-plugin-google-play-games": "1.4.4"
+  }
+}
