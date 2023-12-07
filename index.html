@@ -182,42 +182,5 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    function saveLastOnlineTime() {
-      localStorage.setItem('lastOnline', Date.now());
-    }
-    function calculateOfflineProgress() {
-      const lastOnline = localStorage.getItem('lastOnline');
-      if (lastOnline) {
-        const currentTime = Date.now();
-        const offlineTime = currentTime - parseInt(lastOnline);
-        const offlineHours = Math.floor(offlineTime / (1000 * 60 * 60));
-        const offlineMinutes = Math.floor((offlineTime % (1000 * 60 * 60)) / (1000 * 60));
-
-        const offlineEarnings = offlineHours * 10 + offlineMinutes * 0.2;
-
-        document.getElementById("offline-time").textContent = `You were offline for: ${offlineHours} hours ${offlineMinutes} minutes`;
-        document.getElementById("offline-earnings").textContent = `Earnings during this time: ${offlineEarnings.toFixed(2)} coins`;
-      }
-    }
-
-    function openOfflineModal() {
-      const modal = document.getElementById("offlineModal");
-      modal.style.display = "block";
-    }
-
-    function closeOfflineModal() {
-      const modal = document.getElementById("offlineModal");
-      modal.style.display = "none";
-    }
-
-    const lastOnline = localStorage.getItem('lastOnline');
-    if (lastOnline) {
-      calculateOfflineProgress();
-      openOfflineModal();
-    }
-
-    window.addEventListener('beforeunload', saveLastOnlineTime);
-  </script>
 </body>
 </html>
