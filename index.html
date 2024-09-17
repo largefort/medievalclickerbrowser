@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,7 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       background-color: rgba(0, 0, 0, 0.6);
       border: 5px solid #8A5C2E;
@@ -24,6 +26,7 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
       margin-top: 50px;
     }
+
     .nav-pills .nav-link {
       font-size: 18px;
       padding: 10px 10px;
@@ -33,11 +36,13 @@
       color: #FFD700;
       margin: 5px;
     }
+
     .nav-pills .nav-link.active {
       background-color: rgba(75, 37, 19, 0.8);
       color: #8A5C2E;
       font-weight: bold;
     }
+
     .upgrade {
       font-size: 18px;
       color: #f7dfc4;
@@ -49,10 +54,12 @@
       transition: background-color 0.3s, color 0.3s;
       border-radius: 10px;
     }
+
     .upgrade:hover {
       background-color: #5a3921;
       color: #ffcc00;
     }
+
     .modal {
       display: none;
       position: fixed;
@@ -65,6 +72,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .modal-content {
       background-color: #251c12;
       color: #f7dfc4;
@@ -73,6 +81,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
+
     .close {
       position: absolute;
       top: 10px;
@@ -81,12 +90,14 @@
       color: #f7dfc4;
       cursor: pointer;
     }
+
     .castle-image {
       border: 5px solid #532c08;
       border-radius: 10px;
       max-width: 100%;
       height: auto;
     }
+
     @font-face {
       font-family: 'MedievalFont';
       src: url('your-medieval-font.woff') format('woff');
@@ -95,9 +106,11 @@
   <meta name="google-adsense-account" content="your-google-adsense-account">
   <script async src="https://pagead2.googlesyndication.com/pagead/js?client=your-google-adsense-account" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="container">
     <div class="tab-content">
+      <!-- Castle Tab -->
       <div class="tab-pane fade show active" id="castle-tab">
         <div class="text-center">
           <img id="castle" src="https://raw.githubusercontent.com/largefort/Medievalskilling/main/castle.png" alt="Castle" class="castle-image" onclick="clickCastle()">
@@ -112,6 +125,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Skilling Tab -->
       <div class="tab-pane fade" id="skilling-tab">
         <div class="text-center">
           <h2>Skilling</h2>
@@ -123,6 +138,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Shop Tab -->
       <div class="tab-pane fade" id="shop-tab">
         <div class="text-center">
           <h2>Shop</h2>
@@ -148,6 +165,8 @@
           </audio>
         </div>
       </div>
+
+      <!-- Settings Tab -->
       <div class="tab-pane fade" id="settings-tab">
         <div class="text-center">
           <h2>Settings</h2>
@@ -164,6 +183,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Navigation -->
     <div class="nav nav-pills nav-fill fixed-bottom">
       <a class="nav-link active" data-toggle="pill" href="#castle-tab">Castle</a>
       <a class="nav-link" data-toggle="pill" href="#skilling-tab">Skilling</a>
@@ -171,16 +192,20 @@
       <a class="nav-link" data-toggle="pill" href="#settings-tab">Settings</a>
     </div>
   </div>
-  <div id="offlineModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeOfflineModal()">&times;</span>
-      <h2>Offline Progress</h2>
-      <p id="offline-time">You were offline for: 0 hours 0 minutes</p>
-      <p id="offline-earnings">Earnings during this time: 0 coins</p>
-    </div>
-  </div>
+
+  <!-- Fullscreen Button -->
+  <button id="fullscreen-button" style="display: none;" onclick="autoEnterFullscreen()">Enter Fullscreen</button>
+
+  <!-- Scripts and Audio -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <audio id="medievaltheme" loop autoplay>
+    <source src="medievaltheme.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <audio id="click-sound" src="click-sound.mp3" type="audio/mp3"></audio>
 </body>
+
 </html>

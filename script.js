@@ -8,7 +8,6 @@ let paladinCount = 0;
 let passiveIncome = 0;
 let db;
 let lastSaveTime = Date.now(); // Initialize lastSaveTime with the current time
-let gameIsActive = true; // Indicates if the game is currently active
 
 // Add an HTML audio element for the upgrade sound
 document.write(`
@@ -126,6 +125,7 @@ function requestFullscreen(element) {
     }
 }
 
+
 function updateUI() {
     document.getElementById("counter").textContent = `Gold coins: ${compactNumberFormat(coins)}`;
     document.getElementById("knight-count").textContent = knightCount;
@@ -228,48 +228,11 @@ function earnPassiveIncome() {
     const timeDifference = currentTime - lastSaveTime;
     const offlinePassiveIncome = Math.floor(passiveIncome * (timeDifference / 1000));
 
-    if (gameIsActive) {
-        coins += offlinePassiveIncome;
-    }
-
+    coins += offlinePassiveIncome;
     lastSaveTime = currentTime; // Update the last save time
 
     saveGameData();
     updateUI();
 }
 
-function openOfflineModal() {
-    const modal = document.getElementById("offlineModal");
-    modal.style.display = "block";
-    gameIsActive = false; // Set game as inactive when opening the modal
-    calculateOfflineProgress();
-}
-
-function closeOfflineModal() {
-    const modal = document.getElementById("offlineModal");
-    modal.style.display = "none";
-    gameIsActive = true; // Set game as active when closing the modal
-}
-
-function calculateOfflineProgress() {
-    const lastOnline = localStorage.getItem('lastOnline');
-    if (lastOnline) {
-        const currentTime = Date.now();
-        const offlineTime = currentTime - parseInt(lastOnline);
-        const offlineHours = Math.floor(offlineTime / (1000 * 60 * 60));
-        const offlineMinutes = Math.floor((offlineTime % (1000 * 60 * 60)) / (1000 * 60));
-
-        const offlineEarnings = offlineHours * 10 + offlineMinutes * 0.2;
-
-        document.getElementById("offline-time").textContent = `You were offline for: ${offlineHours} hours ${offlineMinutes} minutes`;
-        document.getElementById("offline-earnings").textContent = `Earnings during this time: ${offlineEarnings.toFixed(2)} coins`;
-    }
-}
-
-const lastOnline = localStorage.getItem('lastOnline');
-if (lastOnline) {
-    openOfflineModal();
-    calculateOfflineProgress();
-}
-
-window.addEventListener('beforeunload', saveLastOnlineTime);
+setInterval(earnPassiveIncome, 1000);
